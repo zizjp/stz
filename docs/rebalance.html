@@ -1,15 +1,142 @@
-<!-- docs/rebalance.html -->
-<!doctype html><meta charset="utf-8">
-<title>リバランス計算（準備中）</title>
-<link rel="stylesheet" href="./styles.css">
-<style>main{padding:16px}</style>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>リバランス計算 | ここちゃん2億円プロジェクト</title>
+  <link rel="stylesheet" href="./rebalance.css" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
 <body>
-  <div class="appbar">
-    <div class="brand"><div class="brand-dot"></div><div class="brand-title">ここちゃん2億円プロジェクト</div></div>
-    <div class="app-actions"><a class="counter" href="./index.html">Top</a></div>
-  </div>
+  <header class="appbar">
+    <div class="brand">
+      <span class="brand-dot"></span>
+      <span class="brand-title">リバランス計算</span>
+    </div>
+    <div class="app-actions">
+      <span class="chip">iPhone最適</span>
+    </div>
+  </header>
+
   <main>
-    <h1>リバランス計算</h1>
-    <p>現在の配分・評価額から、目標配分へ自動で調整案を出すページ。近日公開。</p>
+
+    <!-- 説明 -->
+    <section class="block">
+      <div class="card light">
+        <p class="muted">
+          現在の評価額と目標比率（%）を入れるだけ。<br>
+          <b>用語：</b> 現在評価額＝いまの<strong>時価合計</strong>。売買単価＝<strong>時価/基準価額</strong>（口数計算用）。取得単価は参考で、リバランス計算には使いません。<br>
+          同じ銘柄でも「積立/成長/特別」など枠が分かれる場合は、行を分けて<strong>枠/口座</strong>に入力してください。
+        </p>
+      </div>
+    </section>
+
+    <!-- 入出金・丸め・%合計 -->
+    <section class="block">
+      <div class="card">
+        <div class="row">
+          <label class="lbl">新規入出金（円）</label>
+          <div class="fld">
+            <input id="newCash" type="number" inputmode="decimal" step="1" placeholder="0" />
+          </div>
+        </div>
+
+        <div class="row">
+          <label class="lbl">丸め（口数/最小単位）</label>
+          <div class="fld">
+            <select id="roundMode">
+              <option value="nearest">最近傍（四捨五入）</option>
+              <option value="floor">切り捨て</option>
+              <option value="ceil">切り上げ</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row" style="margin-top:6px">
+          <label class="lbl">%合計</label>
+          <div class="fld">
+            <output id="pctTotal" aria-live="polite">0%</output>
+            <button id="normalizeBtn" class="btn ghost" type="button" style="margin-left:8px">100%に正規化</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- アセット入力 -->
+    <section class="block">
+      <div class="card assets">
+        <div class="assets-head">
+          <div>銘柄名</div>
+          <div class="right">現在額</div>
+          <div class="right">目標%</div>
+          <div></div>
+        </div>
+        <div id="assetList"></div>
+
+        <div class="row" style="margin-top:6px">
+          <button id="addRow" class="btn" type="button">＋ 行を追加</button>
+          <button id="calcBtn" class="btn primary" type="button" style="margin-left:8px">計算する</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- サマリー -->
+    <section class="block">
+      <div class="card">
+        <div class="sum-grid">
+          <div class="row">
+            <label class="lbl">現状総額</label>
+            <div class="fld"><output id="totalNow" class="sum-value">¥0</output></div>
+          </div>
+          <div class="row">
+            <label class="lbl">目標総額（入出金後）</label>
+            <div class="fld"><output id="totalTarget" class="sum-value">¥0</output></div>
+          </div>
+          <div class="row">
+            <label class="lbl">売買総額（概算）</label>
+            <div class="fld"><output id="turnover" class="sum-value">¥0</output></div>
+          </div>
+          <div class="row">
+            <label class="lbl">残差（端数）</label>
+            <div class="fld"><output id="residual" class="sum-value">¥0</output></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 行別結果 -->
+    <section class="block card" id="resultCard">
+      <div class="result-head">
+        <div>銘柄 / 枠</div>
+        <div class="right w80">現在%</div>
+        <div class="right w80">目標%</div>
+        <div class="right w100">売買額</div>
+        <div class="right w80">口数</div>
+      </div>
+      <div id="resultList" class="result-body"></div>
+    </section>
+
+    <!-- 銘柄別（集計） -->
+    <section class="block card" id="groupCard">
+      <div class="result-head">
+        <div>銘柄（集計）</div>
+        <div class="right w80">現在%</div>
+        <div class="right w80">目標%</div>
+        <div class="right w100">売買額</div>
+        <div class="right w80">口数</div>
+      </div>
+      <div id="groupList" class="result-body"></div>
+    </section>
+
   </main>
+
+  <!-- 下部アクション -->
+  <div class="fabbar">
+    <button id="shareBtn" class="btn" data-action="share" data-scope="both" type="button">共有</button>
+    <button id="copyBtn"  class="btn" data-action="copy"  data-scope="rows" type="button">コピー</button>
+  </div>
+
+  <script src="./rebalance.js" defer></script>
 </body>
+</html>
