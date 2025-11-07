@@ -120,3 +120,4 @@ tbody tr:nth-child(odd){ background:#fafafa; }
 .shock-negative-medium{ text-align:center; background:rgba(229,62,62,0.15); color:#9B2C2C; }
 .shock-negative-severe{ text-align:center; background:rgba(229,62,62,0.30); color:#822727; font-weight:600; }
 .shock-positive{ text-align:center; background:rgba(72,187,120,0.15); color:#276749; }
+

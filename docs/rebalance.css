@@ -225,3 +225,18 @@ input[type="number"]{ -moz-appearance:textfield }
     --r-name:52%; --r-cur:12%; --r-tgt:12%; --r-amt:16%; --r-units:8%;
   }
 }
+
+/* 行内ミニ見出し（各行に表示） */
+.assets .asset-row > .cell{
+  display:flex; flex-direction:column; gap:6px; min-width:0;
+}
+.assets .asset-row .colhdr{
+  font-size:11px; color:var(--muted);
+  line-height:1; letter-spacing:.2px;
+}
+.assets .asset-row .colhdr.right{ text-align:right }
+
+/* 画面が狭い時は上部の全体ヘッダを隠して重複回避（好みで外してOK） */
+@media (max-width: 480px){
+  .assets-head{ display:none }
+}

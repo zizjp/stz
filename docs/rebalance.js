@@ -140,11 +140,21 @@
     function rowHTML(a){
       return `
         <div class="asset-row" data-id="${a.id}">
-          <input class="name"  placeholder="銘柄名（例: eMAXIS Slim S&P500）" value="${esc(a.name)}" aria-label="銘柄名"/>
-          <input class="now right"  type="number" inputmode="decimal" step="1"  value="${fmtNum(a.now)}" aria-label="現在評価額(時価合計, 円)"/>
-          <input class="pct right"  type="number" inputmode="decimal" step="0.1" value="${fmtNum(a.targetPct)}" aria-label="目標比率(%)"/>
+          <div class="cell">
+            <div class="colhdr">銘柄名</div>
+            <input class="name"  placeholder="例: eMAXIS Slim S&P500" value="${esc(a.name)}" aria-label="銘柄名"/>
+          </div>
+          <div class="cell">
+            <div class="colhdr right">現在額</div>
+            <input class="now right"  type="number" inputmode="decimal" step="1"  value="${fmtNum(a.now)}" aria-label="現在評価額(時価合計, 円)"/>
+          </div>
+          <div class="cell">
+            <div class="colhdr right">目標%</div>
+            <input class="pct right"  type="number" inputmode="decimal" step="0.1" value="${fmtNum(a.targetPct)}" aria-label="目標比率(%)"/>
+          </div>
           <button class="btn del" data-id="${a.id}" aria-label="行を削除">✕</button>
         </div>
+
         <div class="asset-adv small" data-id="${a.id}">
           <div class="small">
             <label class="lbl">枠/口座</label>
@@ -180,6 +190,7 @@
         </div>
       `;
     }
+
 
     function adjustPct(id, delta){
       const a=assets.find(x=>x.id===id); if(!a) return;
