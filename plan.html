@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>投資計画デッキ（5年で1億円）</title>
+  <!-- Brand & Libs -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/>
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    :root { --brand:#0A2463; }
+    html, body { height:100%; }
+    body {
+      margin:0; padding:0; background:#eef2f7; font-family:'Noto Sans JP', sans-serif;
+      color:#1f2937;
+    }
+    .deck {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 16px 0 80px 0;
+      position: relative;
+    }
+    .topbar {
+      position: sticky; top:0; z-index: 50; background: #fff;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    .topbar-inner {
+      max-width: 1280px; margin: 0 auto; display:flex; align-items:center; justify-content:space-between; padding:10px 16px;
+    }
+    .brand { display:flex; align-items:center; gap:10px; }
+    .brand-dot { width:12px; height:12px; border-radius:50%; background:var(--brand); }
+    .brand-title { font-weight:700; color:var(--brand); }
+    .nav { display:flex; gap:8px; align-items:center; }
+    .nav button {
+      background: var(--brand); color:#fff; padding:8px 12px; border-radius:8px;
+    }
+    .nav button[disabled] { opacity:0.5; cursor:not-allowed; }
+    .nav .counter { min-width:100px; text-align:center; font-weight:600; color:#374151; }
+    .toc {
+      display:flex; gap:8px; flex-wrap:wrap; padding:8px 16px; background:#fafafa; border-bottom:1px solid #eee;
+    }
+    .toc button {
+      border:1px solid #e5e7eb; padding:6px 10px; border-radius:6px; background:#fff; font-size:12px;
+    }
+    .slide {
+      display:none;
+    }
+    .slide.active { display:block; }
+    /* Shared slide styling */
+    .slide-container {
+        width: 1280px;
+        min-height: 720px;
+        background-color: #f8fafc;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        overflow: hidden;
+        border-radius: 10px;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    }
+    .header-bar { height: 8px; background-color: var(--brand); width: 100%; }
+    .content-wrapper { flex: 1; display: flex; flex-direction: column; padding: 30px 60px 40px 60px; }
+    .title-section { display:flex; align-items:center; margin-bottom:30px; }
+    .title-line { width: 40px; height: 4px; background-color: var(--brand); margin-right: 16px; }
+    .slide-title { color: var(--brand); font-size: 36px; font-weight: 700; }
+    .footer-section { margin-top:auto; font-size:14px; color:#4A5568; border-top:1px solid #E2E8F0; padding-top:12px; }
+    /* utility */
+    .legend-color { width:16px; height:16px; border-radius:2px; margin-right:6px; }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <div class="brand-dot"></div>
+        <div class="brand-title">投資計画デッキ（5年で1億円）</div>
+      </div>
+      <div class="nav">
+        <button id="prevBtn"><i class="fas fa-arrow-left"></i></button>
+        <div class="counter" id="counter">1 / 15</div>
+        <button id="nextBtn"><i class="fas fa-arrow-right"></i></button>
+      </div>
+    </div>
+    <div class="toc" id="toc"></div>
+  </div>
+
+  <div class="deck">
+    <!-- SLIDE 01 -->
+    <section class="slide active" id="slide-01" data-title="投資計画概要">
+      <div class="slide-container">
+        <div class="header-bar"></div>
+        <div class="content-wrapper">
+          <div class="title-section" style="display:block;">
+            <p class="slide-title" style="font-size:48px; line-height:1.2; margin-bottom:16px;">投資計画概要 - 5年で1億円達成戦略</p>
+            <p style="color:#4A5568; font-size:28px; font-weight:500; margin-top:8px;">ここちゃん＆じぃじのポートフォリオ最適化計画</p>
+          </div>
+          <div style="display:flex; justify-content:center; margin:40px 0;">
+            <div style="width:80px; height:80px; border-radius:50%; background-color: rgba(10,36,99,0.1); display:flex; align-items:center; justify-content:center; margin:0 15px;">
+              <i class="fas fa-chart-line fa-3x" style="color:var(--brand);"></i>
+            </div>
+            <div style="width:80px; height:80px; border-radius:50%; background-color: rgba(10,36,99,0.1); display:flex; align-items:center; justify-content:center; margin:0 15px;">
+              <i class="fas fa-money-bill-wave fa-3x" style="color:var(--brand);"></i>
+            </div>
+            <div style="width:80px; height:80px; border-radius:50%; background-color: rgba(10,36,99,0.1); display:flex; align-items:center; justify-content:center; margin:0 15px;">
+              <i class="fas fa-coins fa-3x" style="color:var(--brand);"></i>
+            </div>
+          </div>
+          <div style="background: rgba(10,36,99,0.05); border-left:6px solid var(--brand); padding:24px 30px; margin:40px 0; border-radius:4px;">
+            <p style="font-size:24px; color:#2D3748; font-weight:500;">目的：5年後に税引・手数料・インフレ調整後で合計1億円を目指す</p>
+          </div>
+          <div class="footer-section">
+            <p>日付：2025年11月6日　／　作成：Genspark AI Slides</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 02 -->
+    <section class="slide" id="slide-02" data-title="エグゼクティブサマリー">
+      <div class="slide-container">
+        <div class="header-bar"></div>
+        <div class="content-wrapper">
+          <div class="title-section">
+            <div class="title-line"></div>
+            <h1 class="slide-title">エグゼクティブサマリー</h1>
+          </div>
+          <div>
+            <div style="background: rgba(10,36,99,0.05); border-left:4px solid var(--brand); padding:16px 24px; border-radius:3px; margin-bottom:25px;">
+              <p style="font-size:18px; font-weight:700; color:var(--brand); margin-bottom:8px;">目標</p>
+              <p style="font-size:18px; color:#2D3748; font-weight:500;">5年後 実質1億円（税・手数料・インフレ考慮後）</p>
+            </div>
+            <div style="display:flex; gap:30px;">
+              <div style="flex:1;">
+                <p style="font-size:18px; font-weight:700; color:var(--brand); margin-bottom:12px;">初期条件</p>
+                <div style="display:flex; align-items:baseline; margin-bottom:10px;"><i class="fas fa-circle" style="color:var(--brand); margin-right:12px; font-size:14px;"></i><p style="font-size:17px; color:#2D3748; line-height:1.5;">ここちゃん：初期資産 1,600万円＋月30万円積立</p></div>
+                <div style="display:flex; align-items:baseline; margin-bottom:10px;"><i class="fas fa-circle" style="color:var(--brand); margin-right:12px; font-size:14px;"></i><p style="font-size:17px; color:#2D3748; line-height:1.5;">じぃじ：初期資産 200万円（積立準備中）</p></div>
+                <div style="display:flex; align-items:baseline; margin-bottom:10px;"><i class="fas fa-circle" style="color:var(--brand); margin-right:12px; font-size:14px;"></i><p style="font-size:17px; color:#2D3748; line-height:1.5;">必要目安リターン：年率約28%（参考値）</p></div>
+              </div>
+              <div style="flex:1;">
+                <p style="font-size:18px; font-weight:700; color:var(--brand); margin-bottom:12px;">戦略要点</p>
+                <div style="display:flex; align-items:baseline; margin-bottom:10px;"><i class="fas fa-check" style="color:var(--brand); margin-right:12px;"></i><p style="font-size:17px; color:#2D3748; line-height:1.5;">高期待リターン資産を新NISA枠で優先保有</p></div>
+                <div style="display:flex; align-items:baseline; margin-bottom:10px;"><i class="fas fa-check" style="color:var(--brand); margin-right:12px;"></i><p style="font-size:17px; color:#2D3748; line-height:1.5;">株式（米/全世界/成長）、金、暗号の効果的な分散配分</p></div>
+                <div style="display:flex; align-items:baseline; margin-bottom:10px;"><i class="fas fa-check" style="color:var(--brand); margin-right:12px;"></i><p style="font-size:17px; color:#2D3748; line-height:1.5;">年1回＋±10%乖離のハイブリッド・リバランス戦略</p></div>
+                <div style="display:flex; align-items:baseline; margin-bottom:10px;"><i class="fas fa-check" style="color:var(--brand); margin-right:12px;"></i><p style="font-size:17px; color:#2D3748; line-height:1.5;">シナリオ分析とストレステストで資産耐性を確認</p></div>
+              </div>
+            </div>
+            <div style="background: rgba(10,36,99,0.05); border-left:4px solid #3182ce; padding:16px 24px; border-radius:3px; margin-top:8px;">
+              <p style="font-size:18px; font-weight:700; color:var(--brand); margin-bottom:4px;">期待アウトカム</p>
+              <p style="font-size:15px; color:#2D3748;">強気シナリオでは達成可能性高。ベースケースでは追加対策（積立増額・期間延長・リスク許容度見直し）を併用して目標達成を目指す</p>
+            </div>
+            <div class="footer-section">
+              <p>※本資料は過去のパフォーマンスに基づく参考情報です。将来の運用成果を保証するものではありません。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 03 -->
+    <section class="slide" id="slide-03" data-title="投資概要（目標・プロファイル・対象資産）">
+      <div class="slide-container">
+        <div class="header-bar"></div>
+        <div class="content-wrapper">
+          <div class="title-section"><div class="title-line"></div><h1 class="slide-title">投資概要（目標・プロファイル・対象資産）</h1></div>
+          <div>
+            <div style="display:flex; gap:25px; margin-bottom:25px;">
+              <div style="flex:1; background:rgba(10,36,99,0.05); border-radius:3px; padding:16px 24px;">
+                <div style="display:flex; align-items:center; margin-bottom:10px;">
+                  <i class="fas fa-chart-line" style="color:var(--brand); margin-right:10px; font-size:20px;"></i>
+                  <p style="font-size:18px; font-weight:700; color:var(--brand);">ここちゃん</p>
+                </div>
+                <div style="display:flex; align-items:baseline; margin-bottom:10px;"><i class="fas fa-angle-right" style="color:var(--brand); margin-right:12px;"></i><p>積極成長型投資家</p></div>
+                <div style="display:flex; align-items:baseline; margin-bottom:10px;"><i class="fas fa-angle-right" style="color:var(--brand); margin-right:12px;"></i><p>初期資産：1,600万円</p></div>
+                <div style="display:flex; align-items:baseline; margin-bottom:10px;"><i class="fas fa-angle-right" style="color:var(--brand); margin-right:12px;"></i><p>月30万円の継続的積立</p></div>
+                <div style="display:flex; align-items:baseline; margin-bottom:0;"><i class="fas fa-angle-right" style="color:var(--brand); margin-right:12px;"></i><p>長期積立の継続力あり</p></div>
+              </div>
+              <div style="flex:1; background:rgba(10,36,99,0.05); border-radius:3px; padding:16px 24px;">
+                <div style="display:flex; align-items:center; margin-bottom:10px;">
+                  <i class="fas fa-shield-alt" style="color:var(--brand); margin-right:10px; font-size:20px;"></i>
+                  <p style="font-size:18px; font-weight:700; color:var(--brand);">じぃじ</p>
+                </div>
+                <div style="display:flex; align-items:baseline; margin-bottom:10px;"><i class="fas fa-angle-right" style="color:var(--brand); margin-right:12px;"></i><p>安定志向型投資家</p></div>
+                <div style="display:flex; align-items:baseline; margin-bottom:10px;"><i class="fas fa-angle-right" style="color:var(--brand); margin-right:12px;"></i><p>初期資産：200万円</p></div>
+                <div style="display:flex; align-items:baseline; margin-bottom:10px;"><i class="fas fa-angle-right" style="color:var(--brand); margin-right:12px;"></i><p>積立準備中</p></div>
+                <div style="display:flex; align-items:baseline; margin-bottom:0;"><i class="fas fa-angle-right" style="color:var(--brand); margin-right:12px;"></i><p>ボラティリティ抑制と元本保全重視</p></div>
+              </div>
+            </div>
+            <div style="background: rgba(10,36,99,0.05); border-left:4px solid var(--brand); padding:16px 24px; border-radius:3px; margin-bottom:25px;">
+              <p style="font-size:18px; font-weight:700; color:var(--brand); margin-bottom:8px;">制約条件</p>
+              <div style="display:flex; align-items:baseline; margin-bottom:10px;"><i class="fas fa-check" style="color:var(--brand); margin-right:12px;"></i><p>投資対象は指定銘柄・ファンド・暗号資産に限定</p></div>
+              <div style="display:flex; align-items:baseline; margin-bottom:10px;"><i class="fas fa-check" style="color:var(--brand); margin-right:12px;"></i><p>長期保有を基本方針とし、5年後の目標達成を重視</p></div>
+              <div style="display:flex; align-items:baseline;"><i class="fas fa-check" style="color:var(--brand); margin-right:12px;"></i><p>ポートフォリオ分散と定期的なリバランス実施</p></div>
+            </div>
+            <div>
+              <p style="font-size:18px; font-weight:700; color:var(--brand); margin-bottom:12px;">口座区分と税制</p>
+              <div style="display:flex; align-items:baseline; margin-bottom:10px;"><i class="fas fa-university" style="color:var(--brand); margin-right:12px;"></i><p><strong>新NISA優先活用：</strong>非課税期間無期限、高成長・分配金資産を優先配分</p></div>
+              <div style="display:flex; align-items:baseline;"><i class="fas fa-university" style="color:var(--brand); margin-right:12px;"></i><p><strong>課税口座：</strong>暗号資産は損益通算不可の点に留意（他の金融商品との損益相殺ができない）</p></div>
+            </div>
+            <div style="background: rgba(237,137,54,0.1); border-left:4px solid #ED8936; padding:16px 24px; border-radius:3px; margin-top:25px;">
+              <p style="font-size:18px; font-weight:700; color:#C05621; margin-bottom:8px;">リスク特性</p>
+              <div style="display:flex; align-items:baseline; margin-bottom:10px;"><i class="fas fa-exclamation-triangle" style="color:#C05621; margin-right:12px;"></i><p><strong>株式：</strong>年率ボラティリティ15～20%程度、景気循環に連動</p></div>
+              <div style="display:flex; align-items:baseline; margin-bottom:10px;"><i class="fas fa-exclamation-triangle" style="color:#C05621; margin-right:12px;"></i><p><strong>金：</strong>株式より低いボラティリティ、インフレヘッジと分散効果</p></div>
+              <div style="display:flex; align-items:baseline; margin-bottom:10px;"><i class="fas fa-exclamation-triangle" style="color:#C05621; margin-right:12px;"></i><p><strong>暗号資産：</strong>極めて高いボラティリティ（株式の約3倍）、大幅下落リスク</p></div>
+              <div style="display:flex; align-items:baseline;"><i class="fas fa-exclamation-triangle" style="color:#C05621; margin-right:12px;"></i><p><strong>為替：</strong>外貨建て資産は円高局面で円換算評価額が下落するリスクあり</p></div>
+            </div>
+            <div class="footer-section"><p>※投資にはリスクが伴います。過去の実績は将来のパフォーマンスを保証するものではありません。</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 04 -->
+    <section class="slide" id="slide-04" data-title="過去5年パフォーマンスの要約">
+      <div class="slide-container">
+        <div class="header-bar"></div>
+        <div class="content-wrapper">
+          <div class="title-section"><div class="title-line"></div><h1 class="slide-title">過去5年パフォーマンスの要約（2021–2025）</h1></div>
+          <div>
+            <div style="display:flex; justify-content:flex-end; margin-bottom:8px;">
+              <div style="display:flex; align-items:center; margin-left:20px;"><div class="legend-color" style="background:rgba(72,187,120,0.15)"></div><span style="font-size:14px; color:#4A5568;">低リスク</span></div>
+              <div style="display:flex; align-items:center; margin-left:20px;"><div class="legend-color" style="background:rgba(237,137,54,0.15)"></div><span style="font-size:14px; color:#4A5568;">中リスク</span></div>
+              <div style="display:flex; align-items:center; margin-left:20px;"><div class="legend-color" style="background:rgba(229,62,62,0.15)"></div><span style="font-size:14px; color:#4A5568;">高リスク</span></div>
+              <div style="display:flex; align-items:center; margin-left:20px;"><div class="legend-color" style="background:rgba(229,62,62,0.3)"></div><span style="font-size:14px; color:#4A5568;">極高リスク</span></div>
+            </div>
+            <div class="data-table-container">
+              <table class="data-table" style="width:100%; border-collapse:separate; border-spacing:0; border-radius:4px; overflow:hidden; box-shadow:0 2px 4px rgba(0,0,0,0.05);">
+                <thead>
+                  <tr>
+                    <th style="background:var(--brand); color:#fff; text-align:center; padding:12px 16px; font-weight:600; font-size:16px;">資産クラス</th>
+                    <th style="background:var(--brand); color:#fff; text-align:center; padding:12px 16px; font-weight:600; font-size:16px;">年率リターン<br/>（実質年率想定）</th>
+                    <th style="background:var(--brand); color:#fff; text-align:center; padding:12px 16px; font-weight:600; font-size:16px;">年率ボラティリティ</th>
+                    <th style="background:var(--brand); color:#fff; text-align:center; padding:12px 16px; font-weight:600; font-size:16px;">最大ドローダウン</th>
+                    <th style="background:var(--brand); color:#fff; text-align:center; padding:12px 16px; font-weight:600; font-size:16px;">95％VaR<br/>（水準）</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td style="text-align:left; font-weight:600; color:#2D3748; padding-left:20px;">S&amp;P500連動投信（米株）</td>
+                    <td>約7～10％</td>
+                    <td style="background:rgba(237,137,54,0.15); color:#9C4221;">~15％</td>
+                    <td style="background:rgba(237,137,54,0.15); color:#9C4221;">～▲25％程度</td>
+                    <td style="background:rgba(237,137,54,0.15); color:#9C4221;">中程度 (~15%下落)</td>
+                  </tr>
+                  <tr>
+                    <td style="text-align:left; font-weight:600; color:#2D3748; padding-left:20px;">All-Country投信（全世界）</td>
+                    <td>S&amp;P500同程度</td>
+                    <td style="background:rgba(237,137,54,0.15); color:#9C4221;">~15％</td>
+                    <td style="background:rgba(237,137,54,0.15); color:#9C4221;">同左</td>
+                    <td style="background:rgba(237,137,54,0.15); color:#9C4221;">同左</td>
+                  </tr>
+                  <tr>
+                    <td style="text-align:left; font-weight:600; color:#2D3748; padding-left:20px;">国内高配当投信</td>
+                    <td>~2～4％</td>
+                    <td style="background:rgba(237,137,54,0.15); color:#9C4221;">~15％</td>
+                    <td style="background:rgba(237,137,54,0.15); color:#9C4221;">～▲20％</td>
+                    <td style="background:rgba(237,137,54,0.15); color:#9C4221;">中程度</td>
+                  </tr>
+                  <tr>
+                    <td style="text-align:left; font-weight:600; color:#2D3748; padding-left:20px;">FANG+（ハイテク指数）</td>
+                    <td>S&amp;P500以上</td>
+                    <td style="background:rgba(229,62,62,0.15); color:#9B2C2C;">~20％以上</td>
+                    <td style="background:rgba(229,62,62,0.15); color:#9B2C2C;">～▲30％</td>
+                    <td style="background:rgba(229,62,62,0.15); color:#9B2C2C;">高（20%下落）</td>
+                  </tr>
+                  <tr>
+                    <td style="text-align:left; font-weight:600; color:#2D3748; padding-left:20px;">純金信託・金ETF</td>
+                    <td>0～3％程度</td>
+                    <td style="background:rgba(72,187,120,0.15); color:#276749;">~10％</td>
+                    <td style="background:rgba(72,187,120,0.15); color:#276749;">▲10～15％</td>
+                    <td style="background:rgba(72,187,120,0.15); color:#276749;">低（5-10%）</td>
+                  </tr>
+                  <tr>
+                    <td style="text-align:left; font-weight:600; color:#2D3748; padding-left:20px;">個別株（高配当・成長）</td>
+                    <td>各社に依存</td>
+                    <td style="background:rgba(229,62,62,0.15); color:#9B2C2C;">15～30％</td>
+                    <td style="background:rgba(229,62,62,0.15); color:#9B2C2C;">個別に▲30%以上</td>
+                    <td style="background:rgba(229,62,62,0.15); color:#9B2C2C;">高</td>
+                  </tr>
+                  <tr>
+                    <td style="text-align:left; font-weight:600; color:#2D3748; padding-left:20px;">暗号資産（BTC, ETH等）</td>
+                    <td>年率数十％</td>
+                    <td style="background:rgba(229,62,62,0.3); color:#822727; font-weight:600;">50～100％級</td>
+                    <td style="background:rgba(229,62,62,0.3); color:#822727; font-weight:600;">▲70～90％超</td>
+                    <td style="background:rgba(229,62,62,0.3); color:#822727; font-weight:600;">非常に高（50%超）</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div style="margin-top:16px; background:rgba(10,36,99,0.05); border-radius:4px; padding:12px 16px;">
+              <p style="font-weight:600; color:var(--brand); margin-bottom:4px;">指標の説明</p>
+              <p style="font-size:14px; color:#4A5568;">・<strong>年率リターン（CAGR）</strong>：複利年率換算での平均収益率。S&amp;P500は2021年末基準で過去5年累計約50％増（年約8.5％）</p>
+              <p style="font-size:14px; color:#4A5568;">・<strong>年率ボラティリティ</strong>：価格変動の激しさ。数値が大きいほどリスクが高い。暗号資産は株式の約3～5倍</p>
+              <p style="font-size:14px; color:#4A5568;">・<strong>最大ドローダウン</strong>：ピークからの最大下落率。投資家心理への影響が大きい指標</p>
+              <p style="font-size:14px; color:#4A5568;">・<strong>95％VaR</strong>：95%の確率で発生しない最大損失率。リスク管理の重要指標</p>
+            </div>
+            <p style="font-size:14px; color:#4A5568; margin-top:16px; font-style:italic;">※上記は過去の実績に基づく推計値であり、将来のパフォーマンスを保証するものではありません。</p>
+            <div class="footer-section"><p>データソース：各種投資信託・指数の過去パフォーマンスデータ（2021-2025）</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 05 (patched tooltip logic) -->
+    <section class="slide" id="slide-05" data-title="資産別リスクの特徴">
+      <div class="slide-container">
+        <div class="header-bar"></div>
+        <div class="content-wrapper">
+          <div class="title-section"><div class="title-line"></div><h1 class="slide-title">資産別リスクの特徴と含意</h1></div>
+          <div class="content-section">
+            <div id="assetRiskChart" style="width:100%; height:380px; margin-bottom:20px;"></div>
+            <div style="display:flex; gap:16px; margin-bottom:20px;">
+              <div style="flex:1; background:rgba(10,36,99,0.03); border-radius:6px; padding:16px; box-shadow:0 2px 4px rgba(0,0,0,0.05);">
+                <div style="display:flex; align-items:center; font-size:16px; font-weight:600; color:var(--brand); margin-bottom:8px;">
+                  <div style="width:24px; height:24px; border-radius:50%; background:#3182CE; color:#fff; display:flex; align-items:center; justify-content:center; font-size:12px; margin-right:8px;"><i class="fas fa-chart-line"></i></div>
+                  <p>株式（国内・米国）</p>
+                </div>
+                <p style="font-size:14px; color:#4A5568; line-height:1.6;">景気循環に連動した動き。2022年に大幅下落（▲19%）した後、2023年に反発（+24%）。指数投資で個別銘柄リスク分散が可能。S&amp;P500と全世界株は相関が高く、同時変動。</p>
+              </div>
+              <div style="flex:1; background:rgba(10,36,99,0.03); border-radius:6px; padding:16px; box-shadow:0 2px 4px rgba(0,0,0,0.05);">
+                <div style="display:flex; align-items:center; font-size:16px; font-weight:600; color:var(--brand); margin-bottom:8px;">
+                  <div style="width:24px; height:24px; border-radius:50%; background:#805AD5; color:#fff; display:flex; align-items:center; justify-content:center; font-size:12px; margin-right:8px;"><i class="fas fa-rocket"></i></div>
+                  <p>FANG+（成長株）</p>
+                </div>
+                <p style="font-size:14px; color:#4A5568; line-height:1.6;">ポートフォリオの成長ドライバーだが、下落時の振れ幅が通常株より大きい。テクノロジーセクターへの集中投資のため、セクターリスクに注意。高ボラに耐える投資期間が重要。</p>
+              </div>
+            </div>
+            <div style="display:flex; gap:16px;">
+              <div style="flex:1; background:rgba(10,36,99,0.03); border-radius:6px; padding:16px; box-shadow:0 2px 4px rgba(0,0,0,0.05);">
+                <div style="display:flex; align-items:center; font-size:16px; font-weight:600; color:var(--brand); margin-bottom:8px;">
+                  <div style="width:24px; height:24px; border-radius:50%; background:#D69E2E; color:#fff; display:flex; align-items:center; justify-content:center; font-size:12px; margin-right:8px;"><i class="fas fa-coins"></i></div>
+                  <p>金（ゴールド）</p>
+                </div>
+                <p style="font-size:14px; color:#4A5568; line-height:1.6;">株式との低相関性で知られ、市場ストレス時に下落耐性。5～10%の配分で全体ボラを低減。インフレヘッジの役割も期待。</p>
+              </div>
+              <div style="flex:1; background:rgba(10,36,99,0.03); border-radius:6px; padding:16px; box-shadow:0 2px 4px rgba(0,0,0,0.05);">
+                <div style="display:flex; align-items:center; font-size:16px; font-weight:600; color:var(--brand); margin-bottom:8px;">
+                  <div style="width:24px; height:24px; border-radius:50%; background:#E53E3E; color:#fff; display:flex; align-items:center; justify-content:center; font-size:12px; margin-right:8px;"><i class="fas fa-digital-tachograph"></i></div>
+                  <p>暗号資産（BTC/ETH）</p>
+                </div>
+                <p style="font-size:14px; color:#4A5568; line-height:1.6;">極端な歪度とジャンプリスク。通常は低相関だがストレス時に相関上昇。レジーム変動を前提に配分比率を厳格管理。</p>
+              </div>
+            </div>
+            <div style="background: rgba(10,36,99,0.05); border-left:4px solid var(--brand); padding:16px; border-radius:0 4px 4px 0; margin-top:16px;">
+              <p style="font-weight:600; color:var(--brand); font-size:16px; margin-bottom:8px;">投資への含意</p>
+              <p style="font-size:15px; color:#2D3748; line-height:1.6;">分散で全体ボラ抑制しつつ、高成長資産の比率管理が鍵。暗号資産は全体の5～10%以内、金は最低5%以上の配分で安定化。リスク許容度に合わせた定期再評価が重要。</p>
+            </div>
+          </div>
+          <div class="footer-section"><p>データソース：各資産クラスの過去5年間（2021-2025）のボラティリティとリターン分析</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 06 -->
+    <section class="slide" id="slide-06" data-title="配分（ここちゃん）">
+      <div class="slide-container">
+        <div class="header-bar"></div>
+        <div class="content-wrapper">
+          <div class="title-section"><div class="title-line"></div><h1 class="slide-title">配分戦略（ここちゃん：積極成長型）</h1></div>
+          <div style="display:flex; margin-bottom:20px;">
+            <div style="flex:1; position:relative; height:420px;">
+              <canvas id="allocationChart06"></canvas>
+            </div>
+            <div style="width:420px; padding-left:40px;">
+              <div style="background:rgba(10,36,99,0.05); border-radius:8px; padding:20px; margin-bottom:24px;">
+                <h3 style="font-weight:600; color:var(--brand); font-size:20px; margin-bottom:12px;">積極成長型の方針</h3>
+                <div style="margin-left:20px;">
+                  <div style="display:flex; margin-bottom:8px;"><i class="fas fa-check-circle" style="color:var(--brand); margin-right:8px; margin-top:4px; font-size:14px;"></i><p>NISA枠に高リターン/配当資産を優先配分</p></div>
+                  <div style="display:flex; margin-bottom:8px;"><i class="fas fa-check-circle" style="color:var(--brand); margin-right:8px; margin-top:4px; font-size:14px;"></i><p>成長株・FANGプラスで高成長を目指す</p></div>
+                  <div style="display:flex; margin-bottom:8px;"><i class="fas fa-check-circle" style="color:var(--brand); margin-right:8px; margin-top:4px; font-size:14px;"></i><p>米国・グローバル株を中心に分散投資</p></div>
+                  <div style="display:flex; margin-bottom:8px;"><i class="fas fa-check-circle" style="color:var(--brand); margin-right:8px; margin-top:4px; font-size:14px;"></i><p>暗号資産は上限10%で機会とリスク管理を両立</p></div>
+                  <div style="display:flex; margin-bottom:8px;"><i class="fas fa-check-circle" style="color:var(--brand); margin-right:8px; margin-top:4px; font-size:14px;"></i><p>金は10%配分で下落時ヘッジ</p></div>
+                  <div style="display:flex;"><i class="fas fa-check-circle" style="color:var(--brand); margin-right:8px; margin-top:4px; font-size:14px;"></i><p>現金10%で調整時の買い増し余力</p></div>
+                </div>
+              </div>
+              <div style="display:flex; flex-wrap:wrap; margin-top:20px;">
+                <div style="display:flex; align-items:center; width:50%; margin-bottom:12px;"><div class="legend-color" style="background:#3366CC"></div><span style="font-size:14px; color:#4A5568;">米株インデックス <b style="color:#2D3748; margin-left:4px;">35%</b></span></div>
+                <div style="display:flex; align-items:center; width:50%; margin-bottom:12px;"><div class="legend-color" style="background:#DC3912"></div><span style="font-size:14px; color:#4A5568;">成長株/FANG+ <b style="color:#2D3748; margin-left:4px;">15%</b></span></div>
+                <div style="display:flex; align-items:center; width:50%; margin-bottom:12px;"><div class="legend-color" style="background:#FF9900"></div><span style="font-size:14px; color:#4A5568;">全世界株 <b style="color:#2D3748; margin-left:4px;">10%</b></span></div>
+                <div style="display:flex; align-items:center; width:50%; margin-bottom:12px;"><div class="legend-color" style="background:#109618"></div><span style="font-size:14px; color:#4A5568;">国内成長/高配当 <b style="color:#2D3748; margin-left:4px;">10%</b></span></div>
+                <div style="display:flex; align-items:center; width:50%; margin-bottom:12px;"><div class="legend-color" style="background:#990099"></div><span style="font-size:14px; color:#4A5568;">金ETF <b style="color:#2D3748; margin-left:4px;">10%</b></span></div>
+                <div style="display:flex; align-items:center; width:50%; margin-bottom:12px;"><div class="legend-color" style="background:#0099C6"></div><span style="font-size:14px; color:#4A5568;">暗号資産 <b style="color:#2D3748; margin-left:4px;">10%</b></span></div>
+                <div style="display:flex; align-items:center; width:50%;"><div class="legend-color" style="background:#DD4477"></div><span style="font-size:14px; color:#4A5568;">現金・短期資産 <b style="color:#2D3748; margin-left:4px;">10%</b></span></div>
+              </div>
+            </div>
+          </div>
+          <div class="footer-section"><p>※積極成長型は米国株式中心に高リターン資産を組み合わせ、5年後の目標達成を目指します。</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 07 (patched to NISA枠内訳) -->
+    <section class="slide" id="slide-07" data-title="NISA枠内訳（ここちゃん）">
+      <div class="slide-container">
+        <div class="header-bar"></div>
+        <div class="content-wrapper">
+          <div class="title-section"><div class="title-line"></div><h1 class="slide-title">銘柄レベル配分（NISA枠への当て込み内訳）</h1></div>
+          <div style="display:flex; gap:30px;">
+            <div style="flex:1; position:relative; height:420px;">
+              <canvas id="allocationChart07"></canvas>
+            </div>
+            <div style="flex:1;">
+              <div style="background:rgba(10,36,99,0.05); border-radius:8px; padding:20px; margin-bottom:16px;">
+                <h3 style="font-weight:600; color:var(--brand); font-size:20px; margin-bottom:8px;">積立NISA（月10万円）</h3>
+                <ul style="margin-left:18px; list-style:none; padding:0;">
+                  <li style="margin-bottom:8px;"><i class="fas fa-check-circle" style="color:var(--brand); margin-right:8px;"></i>eMAXIS Slim 全世界株式（オールカントリー） <b>3万円</b></li>
+                  <li style="margin-bottom:8px;"><i class="fas fa-check-circle" style="color:var(--brand); margin-right:8px;"></i>iFreeNEXT FANG+インデックス <b>2万円</b></li>
+                  <li><i class="fas fa-check-circle" style="color:var(--brand); margin-right:8px;"></i>eMAXIS Slim 米国株式（S&P500） <b>5万円</b></li>
+                </ul>
+              </div>
+              <div style="background:#fff; border-radius:8px; padding:20px; box-shadow:0 2px 4px rgba(0,0,0,0.05);">
+                <h3 style="font-weight:600; color:var(--brand); font-size:18px; margin-bottom:8px;">成長投資枠（例）</h3>
+                <p style="font-size:14px; color:#4A5568;">JPM・アメリカ成長株ファンド（アメリカの星）<b> 1,000万円</b>をコア投入（課税→NISAへの乗せ替え検討）。</p>
+                <p style="font-size:14px; color:#4A5568; margin-top:8px;">※実行は市場環境と税制最適化を鑑みて段階的に。</p>
+              </div>
+            </div>
+          </div>
+          <div class="footer-section"><p>※NISA枠は非課税・無期限。つみたて枠120万円／成長投資枠240万円（年計360万円）。</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 08 -->
+    <section class="slide" id="slide-08" data-title="配分（じぃじ）">
+      <div class="slide-container">
+        <div class="header-bar"></div>
+        <div class="content-wrapper">
+          <div class="title-section"><div class="title-line"></div><h1 class="slide-title">配分戦略（じぃじ：安定重視）</h1></div>
+          <div style="display:flex; gap:40px;">
+            <div style="flex:1; position:relative; display:flex; justify-content:center; align-items:center;">
+              <canvas id="portfolioChart" width="450" height="450"></canvas>
+            </div>
+            <div style="flex:1; display:flex; flex-direction:column; justify-content:center;">
+              <div style="background:rgba(10,36,99,0.05); border-radius:8px; padding:20px; margin-bottom:30px;">
+                <div style="display:flex; align-items:center; margin-bottom:14px;"><div class="legend-color" style="background:#3366CC"></div><p class="allocation-text">米株インデックス <span style="margin-left:8px; font-weight:600; color:var(--brand);">25%</span></p></div>
+                <div style="display:flex; align-items:center; margin-bottom:14px;"><div class="legend-color" style="background:#4B9CD3"></div><p class="allocation-text">全世界株 <span style="margin-left:8px; font-weight:600; color:var(--brand);">15%</span></p></div>
+                <div style="display:flex; align-items:center; margin-bottom:14px;"><div class="legend-color" style="background:#2D6E7E"></div><p class="allocation-text">国内高配当 <span style="margin-left:8px; font-weight:600; color:var(--brand);">20%</span></p></div>
+                <div style="display:flex; align-items:center; margin-bottom:14px;"><div class="legend-color" style="background:#FFD700"></div><p class="allocation-text">金ETF <span style="margin-left:8px; font-weight:600; color:var(--brand);">15%</span></p></div>
+                <div style="display:flex; align-items:center; margin-bottom:14px;"><div class="legend-color" style="background:#F4A261"></div><p class="allocation-text">暗号資産 <span style="margin-left:8px; font-weight:600; color:var(--brand);">5%</span></p></div>
+                <div style="display:flex; align-items:center;"><div class="legend-color" style="background:#9FB6CD"></div><p class="allocation-text">現金・短期資産 <span style="margin-left:8px; font-weight:600; color:var(--brand);">20%</span></p></div>
+              </div>
+              <div style="background:#fff; border-radius:8px; padding:20px; box-shadow:0 2px 4px rgba(0,0,0,0.05);">
+                <p style="font-weight:600; font-size:18px; color:var(--brand); margin-bottom:8px;">投資方針</p>
+                <p style="font-size:15px; color:#4A5568; line-height:1.6; margin-bottom:12px;"><i class="fas fa-shield-alt" style="color:var(--brand); margin-right:8px;"></i>分配金とディフェンシブ性重視。高配当株と金で35%配分。</p>
+                <p style="font-size:15px; color:#4A5568; line-height:1.6; margin-bottom:12px;"><i class="fas fa-balance-scale" style="color:var(--brand); margin-right:8px;"></i>ボラ抑制を優先しつつ、米国・世界株で40%の成長性確保。</p>
+                <p style="font-size:15px; color:#4A5568; line-height:1.6; margin-bottom:12px;"><i class="fas fa-wallet" style="color:var(--brand); margin-right:8px;"></i>現金20%で急落時の買い増し余力。</p>
+                <p style="font-size:15px; color:#4A5568; line-height:1.6;"><i class="fas fa-chart-line" style="color:var(--brand); margin-right:8px;"></i>暗号資産は5%に厳格制限。</p>
+              </div>
+              <p style="font-size:14px; color:#4A5568; font-style:italic; margin-top:12px;">※初期資産200万円、月々の積立準備中。NISAへの移行順序は米株・高配当を優先。</p>
+            </div>
+          </div>
+          <div class="footer-section"><p>現時点の配分は暫定案。積立開始と市場環境に応じて調整。</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 09 -->
+    <section class="slide" id="slide-09" data-title="シナリオ分析：前提と手法">
+      <div class="slide-container">
+        <div class="header-bar"></div>
+        <div class="content-wrapper">
+          <div class="title-section"><div class="title-line"></div><h1 class="slide-title">シナリオ分析：前提と手法</h1></div>
+          <div>
+            <p style="font-size:17px; color:#2D3748; line-height:1.6; margin-bottom:20px;">将来の市場環境を複数のシナリオで想定し、目標達成確率と必要対策を検証します。各資産クラスのリターン前提を3つのシナリオに分けて設定しました。</p>
+            <table class="scenario-table" style="width:100%; border-collapse:collapse; margin:25px 0; box-shadow:0 2px 8px rgba(0,0,0,0.06); border-radius:4px; overflow:hidden;">
+              <thead>
+                <tr>
+                  <th style="background:var(--brand); color:#fff; text-align:left; font-weight:500; font-size:16px; padding:12px 16px;">シナリオ</th>
+                  <th style="background:var(--brand); color:#fff; text-align:left; font-weight:500; font-size:16px; padding:12px 16px;">株式</th>
+                  <th style="background:var(--brand); color:#fff; text-align:left; font-weight:500; font-size:16px; padding:12px 16px;">金</th>
+                  <th style="background:var(--brand); color:#fff; text-align:left; font-weight:500; font-size:16px; padding:12px 16px;">暗号資産</th>
+                  <th style="background:var(--brand); color:#fff; text-align:left; font-weight:500; font-size:16px; padding:12px 16px;">為替・その他</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span style="color:#2F855A; font-weight:500;">強気</span></td>
+                  <td>+10～12%</td>
+                  <td>+5%</td>
+                  <td>+50%（高ボラ）</td>
+                  <td>円安進行</td>
+                </tr>
+                <tr>
+                  <td><span style="color:#3182CE; font-weight:500;">ベース</span></td>
+                  <td>+6～8%</td>
+                  <td>+2%</td>
+                  <td>+15～20%（通常ボラ）</td>
+                  <td>円レート安定</td>
+                </tr>
+                <tr>
+                  <td><span style="color:#C53030; font-weight:500;">弱気</span></td>
+                  <td>▲8～▲10%</td>
+                  <td>+0～+2%</td>
+                  <td>▲50%（相関上昇）</td>
+                  <td>急激な円高</td>
+                </tr>
+              </tbody>
+            </table>
+            <div style="margin-top:25px;">
+              <p style="font-size:18px; font-weight:700; color:var(--brand); margin-bottom:12px;">分析手法</p>
+              <div style="display:flex; align-items:baseline; margin-bottom:10px;"><i class="fas fa-chart-line" style="color:var(--brand); margin-right:12px;"></i><p><strong>モンテカルロ：</strong>各シナリオで1,000回の試行で確率分布を導出</p></div>
+              <div style="display:flex; align-items:baseline; margin-bottom:10px;"><i class="fas fa-chart-area" style="color:var(--brand); margin-right:12px;"></i><p><strong>ファンチャート：</strong>複数パスのレンジを視覚化し、確率範囲を表示</p></div>
+              <div style="display:flex; align-items:baseline; margin-bottom:10px;"><i class="fas fa-sync-alt" style="color:var(--brand); margin-right:12px;"></i><p><strong>レジーム切替：</strong>相関・ボラはマーケットレジームによって変動</p></div>
+              <div style="display:flex; align-items:baseline;"><i class="fas fa-percentage" style="color:var(--brand); margin-right:12px;"></i><p><strong>複利計算：</strong>積立・再投資を含めた月次複利で資産推移を計算</p></div>
+            </div>
+            <div class="footer-section"><p>※前提は過去データと市場見通しに基づく参考値です。将来の運用成果を保証するものではありません。</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 10 (patched goal line) -->
+    <section class="slide" id="slide-10" data-title="シナリオ結果と達成確率">
+      <div class="slide-container">
+        <div class="header-bar"></div>
+        <div class="content-wrapper">
+          <div class="title-section"><div class="title-line"></div><h1 class="slide-title">シナリオ結果と達成確率（初期推計）</h1></div>
+          <div>
+            <div id="asset-chart" style="height:360px; margin-bottom:20px;"></div>
+            <div style="display:flex; gap:20px; margin-top:10px;">
+              <div style="flex:1; background:rgba(10,36,99,0.05); border-radius:4px; padding:16px;">
+                <p style="font-weight:600; color:var(--brand); font-size:16px; margin-bottom:8px;">ここちゃん</p>
+                <p style="font-size:14px; color:#4A5568; line-height:1.6;">強気では1億円到達見込みが高く、累積1億2千万円前後。ベースでは8,500万円（達成確率~65%）、弱気では6,000万円で未達。初期資産と積立額の優位性から達成可能性は相対的に高い。</p>
+              </div>
+              <div style="flex:1; background:rgba(10,36,99,0.05); border-radius:4px; padding:16px;">
+                <p style="font-weight:600; color:var(--brand); font-size:16px; margin-bottom:8px;">じぃじ</p>
+                <p style="font-size:14px; color:#4A5568; line-height:1.6;">強気でも7,000万円程度で目標未達。ベース4,500万円、弱気2,500万円。初期規模と積立開始の遅れから追加資金投入や期間延長が前提。</p>
+              </div>
+            </div>
+            <div style="margin-top:20px; background:rgba(66,153,225,0.08); border-left:4px solid #4299E1; padding:12px 16px; border-radius:0 4px 4px 0;">
+              <p style="font-weight:600; color:#2B6CB0; margin-bottom:8px; font-size:15px;">ギャップ対策オプション</p>
+              <div style="display:flex; flex-wrap:wrap;">
+                <div style="display:flex; align-items:center; width:33%; margin-bottom:6px;"><i class="fas fa-plus-circle" style="color:#4299E1; margin-right:8px;"></i><span style="font-size:14px; color:#4A5568;">積立額増（月+5～10万円）</span></div>
+                <div style="display:flex; align-items:center; width:33%; margin-bottom:6px;"><i class="fas fa-calendar-alt" style="color:#4299E1; margin-right:8px;"></i><span style="font-size:14px; color:#4A5568;">投資期間延長（+1～3年）</span></div>
+                <div style="display:flex; align-items:center; width:33%; margin-bottom:6px;"><i class="fas fa-chart-pie" style="color:#4299E1; margin-right:8px;"></i><span style="font-size:14px; color:#4A5568;">成長資産比率の調整</span></div>
+                <div style="display:flex; align-items:center; width:33%; margin-bottom:6px;"><i class="fas fa-coins" style="color:#4299E1; margin-right:8px;"></i><span style="font-size:14px; color:#4A5568;">暗号資産配分の最適化</span></div>
+                <div style="display:flex; align-items:center; width:33%; margin-bottom:6px;"><i class="fas fa-sync-alt" style="color:#4299E1; margin-right:8px;"></i><span style="font-size:14px; color:#4A5568;">リバランス頻度の見直し</span></div>
+                <div style="display:flex; align-items:center; width:33%; margin-bottom:6px;"><i class="fas fa-check-double" style="color:#4299E1; margin-right:8px;"></i><span style="font-size:14px; color:#4A5568;">複数対策の併用</span></div>
+              </div>
+            </div>
+            <p style="font-size:14px; color:#4A5568; margin-top:16px; font-style:italic;">※詳細な確率とリスクは1,000回モンテカルロで確定。</p>
+            <div class="footer-section"><p>データソース：過去5年の資産クラス別パフォーマンスと相関分析に基づくシナリオシミュレーション</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 11 (patched NISA wording) -->
+    <section class="slide" id="slide-11" data-title="NISA活用と税制最適化">
+      <div class="slide-container">
+        <div class="header-bar"></div>
+        <div class="content-wrapper">
+          <div class="title-section"><div class="title-line"></div><h1 class="slide-title">NISA活用と税制最適化</h1></div>
+          <div>
+            <div style="background:rgba(10,36,99,0.05); border-left:4px solid var(--brand); padding:16px 24px; border-radius:3px; margin-bottom:25px;">
+              <p style="font-size:18px; font-weight:700; color:var(--brand); margin-bottom:8px;">新NISA制度の特徴</p>
+              <p style="font-size:18px; color:#2D3748; font-weight:500;">非課税期間無期限、<b>生涯投資上限1,800万円</b>。年間は<b>つみたて120万円＋成長投資枠240万円＝360万円</b>。</p>
+            </div>
+            <div style="display:flex; gap:30px;">
+              <div style="flex:1;">
+                <p style="font-size:18px; font-weight:700; color:var(--brand); margin-bottom:12px;">NISA枠の優先配分</p>
+                <div style="display:flex; align-items:baseline; margin-bottom:10px;"><i class="fas fa-check" style="color:var(--brand); margin-right:12px;"></i><p>高成長資産（米国株ETF、FANG+系）</p></div>
+                <div style="display:flex; align-items:baseline; margin-bottom:10px;"><i class="fas fa-check" style="color:var(--brand); margin-right:12px;"></i><p>分配金発生資産（高配当ETF）</p></div>
+                <div style="display:flex; align-items:baseline; margin-bottom:10px;"><i class="fas fa-check" style="color:var(--brand); margin-right:12px;"></i><p>金ETF・国際資産（為替差益含む）</p></div>
+                <div style="display:flex; align-items:baseline;"><i class="fas fa-check" style="color:var(--brand); margin-right:12px;"></i><p>長期保有予定の成長株</p></div>
+              </div>
+              <div style="flex:1;">
+                <p style="font-size:18px; font-weight:700; color:var(--brand); margin-bottom:12px;">課税口座での留意点</p>
+                <div style="display:flex; align-items:baseline; margin-bottom:10px;"><i class="fas fa-exclamation-triangle" style="color:#C05621; margin-right:12px;"></i><p>暗号資産は損益通算不可（原則雑所得扱い）</p></div>
+                <div style="display:flex; align-items:baseline; margin-bottom:10px;"><i class="fas fa-exclamation-triangle" style="color:#C05621; margin-right:12px;"></i><p>為替差益も約20.315％課税対象</p></div>
+                <div style="display:flex; align-items:baseline; margin-bottom:10px;"><i class="fas fa-exclamation-triangle" style="color:#C05621; margin-right:12px;"></i><p>売却益に約20.315％課税（住民税含む）</p></div>
+                <div style="display:flex; align-items:baseline;"><i class="fas fa-exclamation-triangle" style="color:#C05621; margin-right:12px;"></i><p>損益は口座間で通算不可</p></div>
+              </div>
+            </div>
+            <div style="background:rgba(49,130,206,0.05); border-left:4px solid #3182ce; padding:16px 24px; border-radius:3px; margin-top:16px;">
+              <p style="font-size:18px; font-weight:700; color:var(--brand); margin-bottom:8px;">JPM・アメリカ成長株ファンド（アメリカの星）の判断</p>
+              <div style="display:flex; align-items:baseline; margin-bottom:10px;"><i class="fas fa-chart-line" style="color:var(--brand); margin-right:12px;"></i><p>利確+100万円の場合：約20.315万円が税金 → 手取り利益約79.7万円</p></div>
+              <div style="display:flex; align-items:baseline; margin-bottom:10px;"><i class="fas fa-balance-scale" style="color:var(--brand); margin-right:12px;"></i><p>判断基準：今後の期待超過リターン（α）が税負担を上回るか評価</p></div>
+              <div style="display:flex; align-items:baseline;"><i class="fas fa-lightbulb" style="color:var(--brand); margin-right:12px;"></i><p>推奨アクション：NISA枠空きがあれば乗せ替え、なければ一部利確＋再配分</p></div>
+            </div>
+            <div class="footer-section"><p>※税制は2025年11月時点の情報です。税制改正により変更される可能性があります。</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 12 -->
+    <section class="slide" id="slide-12" data-title="リバランス戦略とルール">
+      <div class="slide-container">
+        <div class="header-bar"></div>
+        <div class="content-wrapper">
+          <div class="title-section"><div class="title-line"></div><h1 class="slide-title">リバランス戦略とルール</h1></div>
+          <div>
+            <div style="display:flex; gap:30px;">
+              <div style="flex:1;">
+                <div style="background:rgba(10,36,99,0.05); border-left:4px solid var(--brand); padding:16px 24px; border-radius:3px; margin-bottom:25px;">
+                  <p style="font-size:18px; font-weight:700; color:var(--brand); margin-bottom:8px;">ハイブリッド方式</p>
+                  <p style="font-size:18px; color:#2D3748; font-weight:500;">年1回の定期リバランス + 目標配分から±10%乖離した場合のトリガー式を併用</p>
+                </div>
+                <p style="font-size:18px; font-weight:700; color:var(--brand); margin-bottom:12px;">効率的な実務手法</p>
+                <div style="display:flex; align-items:baseline; margin-bottom:10px;"><i class="fas fa-check" style="color:var(--brand); margin-right:12px;"></i><p>新規積立金の配分調整で優先実施（売却最小化）</p></div>
+                <div style="display:flex; align-items:baseline; margin-bottom:10px;"><i class="fas fa-check" style="color:var(--brand); margin-right:12px;"></i><p>各年末に棚卸し・評価を行い、必要に応じて調整</p></div>
+                <div style="display:flex; align-items:baseline;"><i class="fas fa-check" style="color:var(--brand); margin-right:12px;"></i><p>市場急変時（±15%超）には臨時レビュー</p></div>
+
+                <p style="font-size:18px; font-weight:700; color:var(--brand); margin:16px 0 12px;">口座別の留意点</p>
+                <div style="display:flex; align-items:baseline; margin-bottom:10px;"><i class="fas fa-exclamation" style="color:#C05621; margin-right:12px;"></i><p>NISAと課税口座で売却順序を最適化</p></div>
+                <div style="display:flex; align-items:baseline; margin-bottom:10px;"><i class="fas fa-exclamation" style="color:#C05621; margin-right:12px;"></i><p>売買コスト（手数料・スプレッド）を考慮した閾値設定</p></div>
+                <div style="display:flex; align-items:baseline;"><i class="fas fa-exclamation" style="color:#C05621; margin-right:12px;"></i><p>暗号資産の売却益には約20%の税金（損益通算不可）</p></div>
+              </div>
+              <div style="flex:1;">
+                <p style="font-size:18px; font-weight:700; color:var(--brand); margin-bottom:12px;">市場局面別の戦略</p>
+                <div style="display:flex; align-items:baseline; margin-bottom:10px;"><i class="fas fa-long-arrow-alt-down" style="color:var(--brand); margin-right:12px;"></i><p><strong>下落局面：</strong>株式が目標比率を下回るなら積極的に買い増し</p></div>
+                <div style="display:flex; align-items:baseline; margin-bottom:12px;"><i class="fas fa-long-arrow-alt-up" style="color:var(--brand); margin-right:12px;"></i><p><strong>上昇局面：</strong>超過分を部分利確して金・安定資産へ</p></div>
+                <div style="background:rgba(10,36,99,0.03); border-radius:6px; padding:20px; margin-top:10px;">
+                  <div style="display:flex; align-items:center; margin:12px 0;"><div style="width:50px; height:50px; border-radius:50%; background:var(--brand); color:#fff; display:flex; align-items:center; justify-content:center; font-size:22px; margin-right:15px;">1</div><p style="font-size:16px; font-weight:500; color:#2D3748;">現在の資産配分比率を確認（月次）</p></div>
+                  <div style="display:flex; align-items:center; margin:12px 0;"><div style="width:50px; height:50px; border-radius:50%; background:var(--brand); color:#fff; display:flex; align-items:center; justify-content:center; font-size:22px; margin-right:15px;">2</div><p style="font-size:16px; font-weight:500; color:#2D3748;">目標配分からの乖離を計測（±10%ルール）</p></div>
+                  <div style="display:flex; align-items:center; margin:12px 0;"><div style="width:50px; height:50px; border-radius:50%; background:var(--brand); color:#fff; display:flex; align-items:center; justify-content:center; font-size:22px; margin-right:15px;">3</div><p style="font-size:16px; font-weight:500; color:#2D3748;">新規積立金の配分調整で対応可否を検討</p></div>
+                  <div style="display:flex; align-items:center; margin:12px 0;"><div style="width:50px; height:50px; border-radius:50%; background:var(--brand); color:#fff; display:flex; align-items:center; justify-content:center; font-size:22px; margin-right:15px;">4</div><p style="font-size:16px; font-weight:500; color:#2D3748;">必要に応じて既存資産の一部売却・入替</p></div>
+                  <div style="display:flex; align-items:center; margin:12px 0;"><div style="width:50px; height:50px; border-radius:50%; background:var(--brand); color:#fff; display:flex; align-items:center; justify-content:center; font-size:22px; margin-right:15px;">5</div><p style="font-size:16px; font-weight:500; color:#2D3748;">年1回の全体見直しで長期目標を再確認</p></div>
+                </div>
+              </div>
+            </div>
+            <div class="footer-section"><p>※±10%の判定は相対変化基準（例：35%→31.5%で-10%）で統一。</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 13 (patched table cells) -->
+    <section class="slide" id="slide-13" data-title="ストレステスト：想定シナリオ">
+      <div class="slide-container">
+        <div class="header-bar"></div>
+        <div class="content-wrapper">
+          <div class="title-section"><div class="title-line"></div><h1 class="slide-title">ストレステスト：想定シナリオ</h1></div>
+          <div>
+            <div class="data-table-container">
+              <table class="data-table" style="width:100%; border-collapse:separate; border-spacing:0; border-radius:4px; overflow:hidden; box-shadow:0 2px 4px rgba(0,0,0,0.05);">
+                <thead>
+                  <tr>
+                    <th style="background:var(--brand); color:#fff; text-align:center; padding:12px 16px; font-weight:600; font-size:16px;">複合ショック要素（1年想定）</th>
+                    <th style="background:var(--brand); color:#fff; text-align:center; padding:12px 16px; font-weight:600; font-size:16px;">変動率</th>
+                    <th style="background:var(--brand); color:#fff; text-align:center; padding:12px 16px; font-weight:600; font-size:16px;">影響</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td style="text-align:left; font-weight:600; color:#2D3748; padding-left:20px;">株式市場</td>
+                    <td class="shock-negative-medium">▲35％</td>
+                    <td style="text-align:left;">主要リスク資産の大幅下落、恐怖指数（VIX）上昇</td>
+                  </tr>
+                  <tr>
+                    <td style="text-align:left; font-weight:600; color:#2D3748; padding-left:20px;">暗号資産（BTC・ETH）</td>
+                    <td class="shock-negative-severe">▲70％</td>
+                    <td style="text-align:left;">極端な下落、流動性枯渇、株式との相関上昇</td>
+                  </tr>
+                  <tr>
+                    <td style="text-align:left; font-weight:600; color:#2D3748; padding-left:20px;">金価格</td>
+                    <td class="shock-positive">＋10％</td>
+                    <td style="text-align:left;">安全資産としての機能、ポートフォリオクッション効果</td>
+                  </tr>
+                  <tr>
+                    <td style="text-align:left; font-weight:600; color:#2D3748; padding-left:20px;">為替（対ドル円）</td>
+                    <td style="text-align:center;">急激な円高</td>
+                    <td style="text-align:left;">外貨建て資産の円評価額減少、輸出企業業績悪化</td>
+                  </tr>
+                  <tr>
+                    <td style="text-align:left; font-weight:600; color:#2D3748; padding-left:20px;">金利</td>
+                    <td style="text-align:center;">急上昇</td>
+                    <td style="text-align:left;">債券価格下落、割引率上昇で株式評価にも悪影響</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div style="display:flex; justify-content:center; align-items:center; margin:24px 0;">
+              <div style="text-align:center; padding:20px 30px; border-radius:8px; background:var(--brand); color:#fff; font-weight:600; font-size:18px; width:300px; box-shadow:0 4px 6px rgba(0,0,0,0.1);">市場複合ショック</div>
+              <div style="display:flex; flex-direction:column; margin:0 20px;">
+                <div style="display:flex; align-items:center; margin:6px 0;"><div style="height:2px; width:50px; background:#4A5568;"></div><p style="margin:0 8px; font-size:14px; color:#4A5568; width:180px;">資産クラス間の相関上昇</p><div style="height:2px; width:50px; background:#4A5568;"></div></div>
+                <div style="display:flex; align-items:center; margin:6px 0;"><div style="height:2px; width:50px; background:#4A5568;"></div><p style="margin:0 8px; font-size:14px; color:#4A5568; width:180px;">暗号資産と株式の連動売り</p><div style="height:2px; width:50px; background:#4A5568;"></div></div>
+                <div style="display:flex; align-items:center; margin:6px 0;"><div style="height:2px; width:50px; background:#4A5568;"></div><p style="margin:0 8px; font-size:14px; color:#4A5568; width:180px;">流動性の急激な低下</p><div style="height:2px; width:50px; background:#4A5568;"></div></div>
+              </div>
+              <div style="text-align:center; padding:20px 30px; border-radius:8px; background:rgba(229,62,62,0.15); border:1px solid rgba(229,62,62,0.3); color:#9B2C2C; font-weight:600; font-size:18px; width:300px; box-shadow:0 4px 6px rgba(0,0,0,0.05);">ポートフォリオへの影響評価</div>
+            </div>
+            <div style="margin-top:16px; background:rgba(10,36,99,0.05); border-radius:4px; padding:12px 16px;">
+              <p style="font-weight:600; color:var(--brand); margin-bottom:8px;">ストレステスト評価指標</p>
+              <p style="font-size:14px; color:#4A5568; margin-bottom:6px;">・<strong>ポートフォリオ損失率</strong>：複合ショック時の全体予想損失率。許容範囲内か確認</p>
+              <p style="font-size:14px; color:#4A5568; margin-bottom:6px;">・<strong>最大ドローダウン</strong>：ピークからの最大下落幅。回復力と緊急時の耐性を評価</p>
+              <p style="font-size:14px; color:#4A5568; margin-bottom:6px;">・<strong>リスク寄与度（RC）</strong>：各資産の全体リスクへの寄与</p>
+              <p style="font-size:14px; color:#4A5568;">・<strong>回復期間シミュレーション</strong>：ショック後の回復に要する推定期間</p>
+            </div>
+            <p style="font-size:14px; color:#4A5568; margin-top:16px; font-style:italic;">※極端シナリオでリスク管理体制の頑健性を検証。</p>
+            <div class="footer-section"><p>出所：金融危機（2008年）、コロナショック（2020年）等のストレス局面を参考に設定。</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 14 -->
+    <section class="slide" id="slide-14" data-title="ストレステスト：結果と耐性評価">
+      <div class="slide-container">
+        <div class="header-bar"></div>
+        <div class="content-wrapper">
+          <div class="title-section"><div class="title-line"></div><h1 class="slide-title">ストレステスト：結果と耐性評価</h1></div>
+          <div>
+            <div style="display:flex; height:380px; margin-bottom:20px;"><div id="waterfall-chart" style="flex:1;"></div></div>
+            <div style="display:flex; gap:20px; margin-top:20px;">
+              <div style="flex:1; border-radius:6px; padding:16px 20px; background:rgba(229,62,62,0.1); border-left:4px solid #E53E3E;">
+                <h3 style="font-weight:600; font-size:16px; margin-bottom:8px; color:#2D3748;">ここちゃん：ショック時の資産変動</h3>
+                <p style="font-size:14px; color:#4A5568; line-height:1.6;">暗号資産（▲70%）と成長株（FANG+、▲35%）の下押し影響が大きく、全体で約▲30%。金（+10%）がクッションだが限定的。</p>
+              </div>
+              <div style="flex:1; border-radius:6px; padding:16px 20px; background:rgba(72,187,120,0.1); border-left:4px solid #48BB78;">
+                <h3 style="font-weight:600; font-size:16px; margin-bottom:8px; color:#2D3748;">じぃじ：相対的な耐性</h3>
+                <p style="font-size:14px; color:#4A5568; line-height:1.6;">高配当株と金比率が高く、下落は約▲20%に抑制。暗号5%と現金20%が緩衝材。</p>
+              </div>
+            </div>
+            <div style="margin-top:16px; background:rgba(10,36,99,0.05); border-radius:4px; padding:16px 20px;">
+              <h3 style="font-weight:600; color:var(--brand); margin-bottom:8px;">ストレス耐性強化のための対策</h3>
+              <ul style="list-style:none; padding:0; margin:0; display:grid; grid-template-columns:repeat(2, 1fr); gap:12px;">
+                <li style="display:flex;"><i class="fas fa-shield-alt" style="color:var(--brand); margin-right:8px; margin-top:2px;"></i><span style="font-size:14px; color:#4A5568; line-height:1.4;"><strong>暗号資産上限管理：</strong>全体の5-10%以内に抑制。レジーム変化時はリバランス。</span></li>
+                <li style="display:flex;"><i class="fas fa-balance-scale" style="color:var(--brand); margin-right:8px; margin-top:2px;"></i><span style="font-size:14px; color:#4A5568; line-height:1.4;"><strong>金の最適比率維持：</strong>5-10%配分で下落ヘッジ。</span></li>
+                <li style="display:flex;"><i class="fas fa-money-bill-wave" style="color:var(--brand); margin-right:8px; margin-top:2px;"></i><span style="font-size:14px; color:#4A5568; line-height:1.4;"><strong>現金バッファ拡充：</strong>短期資産を10-20%確保。</span></li>
+                <li style="display:flex;"><i class="fas fa-exchange-alt" style="color:var(--brand); margin-right:8px; margin-top:2px;"></i><span style="font-size:14px; color:#4A5568; line-height:1.4;"><strong>為替ヘッジ選択肢：</strong>円高急進時のリスク緩和に一部ヘッジ。</span></li>
+              </ul>
+            </div>
+            <div class="footer-section"><p>ストレスシナリオ：株式▲35%、暗号▲70%、金+10%、円高、金利上昇の複合ショック</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 15 -->
+    <section class="slide" id="slide-15" data-title="KPIダッシュボードと次のアクション">
+      <div class="slide-container">
+        <div class="header-bar"></div>
+        <div class="content-wrapper">
+          <div class="title-section"><div class="title-line"></div><h1 class="slide-title">KPIダッシュボードと次のアクション</h1></div>
+          <div>
+            <div style="background:rgba(10,36,99,0.05); border-left:4px solid var(--brand); padding:16px 24px; border-radius:3px; margin-bottom:25px;">
+              <p style="font-size:18px; font-weight:700; color:var(--brand); margin-bottom:8px;">監視KPI</p>
+              <div style="display:flex; gap:30px; margin-bottom:20px;">
+                <div style="flex:1;">
+                  <div style="display:flex; align-items:baseline; margin-bottom:10px;"><i class="fas fa-chart-line" style="color:var(--brand); margin-right:12px;"></i><p>年率累積リターン vs 目標リターン（5年で1億円の進捗）</p></div>
+                  <div style="display:flex; align-items:baseline; margin-bottom:10px;"><i class="fas fa-chart-bar" style="color:var(--brand); margin-right:12px;"></i><p>年率ボラティリティ（全体/資産別）</p></div>
+                  <div style="display:flex; align-items:baseline;"><i class="fas fa-arrow-down" style="color:var(--brand); margin-right:12px;"></i><p>YTD最大ドローダウンと95％VaR</p></div>
+                </div>
+                <div style="flex:1;">
+                  <div style="display:flex; align-items:baseline; margin-bottom:10px;"><i class="fas fa-balance-scale" style="color:var(--brand); margin-right:12px;"></i><p>配分乖離率（実際比率 vs 目標比）</p></div>
+                  <div style="display:flex; align-items:baseline; margin-bottom:10px;"><i class="fas fa-chart-area" style="color:var(--brand); margin-right:12px;"></i><p>暗号/金の30日・90日標準偏差</p></div>
+                  <div style="display:flex; align-items:baseline;"><i class="fas fa-link" style="color:var(--brand); margin-right:12px;"></i><p>株式動向に対する各資産の相関変化</p></div>
+                </div>
+              </div>
+            </div>
+            <div style="background:rgba(220,38,38,0.05); border-left:4px solid #DC2626; padding:16px 24px; border-radius:3px; margin-bottom:25px;">
+              <p style="font-size:18px; font-weight:700; color:#DC2626; margin-bottom:8px;">アラート条件</p>
+              <div style="display:flex; align-items:baseline; margin-bottom:10px;"><i class="fas fa-exclamation-triangle" style="color:#DC2626; margin-right:12px;"></i><p>配分が目標から±10％以上乖離 → リバランス検討</p></div>
+              <div style="display:flex; align-items:baseline; margin-bottom:10px;"><i class="fas fa-exclamation-triangle" style="color:#DC2626; margin-right:12px;"></i><p>YTD DDが▲15％超 → リスク低減策</p></div>
+              <div style="display:flex; align-items:baseline; margin-bottom:10px;"><i class="fas fa-exclamation-triangle" style="color:#DC2626; margin-right:12px;"></i><p>暗号の月間ボラ急騰（30日ボラ+50%超）または相関急変 → 配分見直し</p></div>
+              <div style="display:flex; align-items:baseline;"><i class="fas fa-exclamation-triangle" style="color:#DC2626; margin-right:12px;"></i><p>年初来リターンが目標から30%以上下振れ → 戦略見直し</p></div>
+            </div>
+            <div style="background:rgba(4,120,87,0.05); border-left:4px solid #047857; padding:16px 24px; border-radius:3px;">
+              <p style="font-size:18px; font-weight:700; color:#047857; margin-bottom:8px;">次のアクション</p>
+              <div style="display:flex; gap:30px;">
+                <div style="flex:1;">
+                  <div style="display:flex; align-items:baseline; margin-bottom:10px;"><i class="fas fa-play" style="color:#047857; margin-right:12px;"></i><p>過去データ収集→1,000回モンテカルロ実行</p></div>
+                  <div style="display:flex; align-items:baseline;"><i class="fas fa-play" style="color:#047857; margin-right:12px;"></i><p>NISA枠優先順位の確定（銘柄・配分リスト化）と口座設定</p></div>
+                </div>
+                <div style="flex:1;">
+                  <div style="display:flex; align-items:baseline; margin-bottom:10px;"><i class="fas fa-play" style="color:#047857; margin-right:12px;"></i><p>四半期レビュー会の設定（第1回：来月第1週）</p></div>
+                  <div style="display:flex; align-items:baseline;"><i class="fas fa-play" style="color:#047857; margin-right:12px;"></i><p>運用ログ・KPIダッシュボード初期設定と定期更新体制</p></div>
+                </div>
+              </div>
+            </div>
+            <div class="footer-section"><p>※KPIを四半期ごとにレビューし、配分やリスク許容度を適宜調整。</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    // ----- Simple deck navigation -----
+    const slides = Array.from(document.querySelectorAll('.slide'));
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const counter = document.getElementById('counter');
+    const toc = document.getElementById('toc');
+    let idx = 0;
+
+    function updateNav() {
+      slides.forEach((s, i) => s.classList.toggle('active', i === idx));
+      counter.textContent = (idx+1) + ' / ' + slides.length;
+      prevBtn.disabled = idx === 0;
+      nextBtn.disabled = idx === slides.length - 1;
+    }
+
+    function jumpTo(i) {
+      idx = Math.max(0, Math.min(slides.length - 1, i));
+      updateNav();
+      initCurrentSlideCharts();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    prevBtn.addEventListener('click', () => jumpTo(idx - 1));
+    nextBtn.addEventListener('click', () => jumpTo(idx + 1));
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') jumpTo(idx + 1);
+      if (e.key === 'ArrowLeft') jumpTo(idx - 1);
+    });
+
+    // TOC buttons
+    slides.forEach((s, i) => {
+      const b = document.createElement('button');
+      b.textContent = (i+1).toString().padStart(2, '0') + ' ' + (s.dataset.title || '');
+      b.addEventListener('click', () => jumpTo(i));
+      toc.appendChild(b);
+    });
+
+    updateNav();
+
+    // ----- Charts init on demand -----
+    const initFlags = new Set();
+
+    function initCurrentSlideCharts() {
+      const id = slides[idx].id;
+      if (initFlags.has(id)) return;
+
+      switch(id) {
+        case 'slide-05': initSlide05(); break;
+        case 'slide-06': initSlide06(); break;
+        case 'slide-07': initSlide07(); break;
+        case 'slide-08': initSlide08(); break;
+        case 'slide-10': initSlide10(); break;
+        case 'slide-14': initSlide14(); break;
+      }
+      initFlags.add(id);
+    }
+
+    // Initialize slide 01 immediately visible charts none.
+    initCurrentSlideCharts();
+
+    // ----- Slide 05 (tooltip patched) -----
+    function initSlide05() {
+      var chartDom = document.getElementById('assetRiskChart');
+      var myChart = echarts.init(chartDom);
+      var categories = ['S&P500','全世界株','国内高配当','FANG+','金ETF','個別株','暗号資産'];
+
+      var candleData = [
+        [-25, -10, 15, 30],  // min, q1, q3, max
+        [-25, -10, 15, 30],
+        [-20, -8, 10, 25],
+        [-30, -15, 20, 40],
+        [-15, -5, 8, 20],
+        [-40, -15, 20, 45],
+        [-80, -30, 40, 90]
+      ];
+
+      var meanData = [8.5, 8, 3, 12, 2, 5, 25];
+
+      var option = {
+        title: { text: '資産別 リスク・リターン特性（2021-2025）', left:'center', textStyle:{ fontSize:18, color:'#2D3748' } },
+        tooltip: {
+          trigger: 'axis',
+          axisPointer: { type: 'shadow' },
+          formatter: function(params) {
+            // find candlestick & mean in params
+            var c = params.find(p => p.seriesName === 'リスク範囲');
+            var m = params.find(p => p.seriesName === '年率リターン（平均）');
+            var lines = [];
+            lines.push(params[0].axisValueLabel);
+            if (c) {
+              lines.push('変動幅: ' + c.data[0] + '% 〜 ' + c.data[3] + '%');
+              lines.push('標準範囲(IQR): ' + c.data[1] + '% 〜 ' + c.data[2] + '%');
+            }
+            if (m) {
+              lines.push('代表値(平均): ' + m.data[1] + '%');
+            }
+            return lines.join('<br/>');
+          }
+        },
+        grid: { left: '5%', right:'5%', bottom:'10%', top:'15%', containLabel:true },
+        xAxis: { type:'category', data: categories, axisLabel:{ interval:0 } },
+        yAxis: { type:'value', name:'変動率（％）', min:-100, max:100, axisLabel:{ formatter:'{value}%' } },
+        series: [
+          {
+            name:'リスク範囲',
+            type:'candlestick',
+            data: candleData,
+            itemStyle:{ color: '#0A2463', color0:'#E53E3E', borderColor:'#0A2463', borderColor0:'#E53E3E' }
+          },
+          {
+            name:'年率リターン（平均）',
+            type:'scatter',
+            data: categories.map((c, i) => [c, meanData[i]]),
+            symbolSize: 10,
+            itemStyle:{ color:'#38A169' }
+          }
+        ]
+      };
+      myChart.setOption(option);
+      window.addEventListener('resize', () => myChart.resize());
+    }
+
+    // ----- Slide 06 (Chart.js pie) -----
+    function initSlide06() {
+      const ctx = document.getElementById('allocationChart06').getContext('2d');
+      new Chart(ctx, {
+        type: 'pie',
+        data: {
+          labels: ['米株インデックス', '成長株/FANG+', '全世界株', '国内成長/高配当', '金ETF', '暗号資産', '現金・短期資産'],
+          datasets: [{
+            data: [35, 15, 10, 10, 10, 10, 10],
+            backgroundColor: ['#3366CC','#DC3912','#FF9900','#109618','#990099','#0099C6','#DD4477'],
+            borderColor:'#fff', borderWidth:2
+          }]
+        },
+        options: { responsive:true, maintainAspectRatio:false, plugins:{ legend:{ display:false } } }
+      });
+    }
+
+    // ----- Slide 07 (NISA内訳) -----
+    function initSlide07() {
+      const ctx = document.getElementById('allocationChart07').getContext('2d');
+      new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+          labels: ['全世界株式(3万)','FANG+(2万)','S&P500(5万)'],
+          datasets: [{
+            data: [3,2,5],
+            backgroundColor: ['#FF9900','#DC3912','#3366CC'],
+            borderColor:'#fff', borderWidth:2
+          }]
+        },
+        options: {
+          responsive:true, maintainAspectRatio:false,
+          plugins:{ legend:{ position:'bottom' }, tooltip:{ callbacks:{ label:(c)=> c.label + ' / 月' } } },
+          cutout:'60%'
+        }
+      });
+    }
+
+    // ----- Slide 08 (Chart.js pie) -----
+    function initSlide08() {
+      const ctx = document.getElementById('portfolioChart').getContext('2d');
+      new Chart(ctx, {
+        type:'pie',
+        data:{ labels:['米株','全世界株','国内高配当','金ETF','暗号資産','現金'],
+          datasets:[{ data:[25,15,20,15,5,20], backgroundColor:['#3366CC','#4B9CD3','#2D6E7E','#FFD700','#F4A261','#9FB6CD'], borderColor:'#fff', borderWidth:2 }]
+        },
+        options:{ responsive:false, maintainAspectRatio:false, plugins:{ legend:{ display:false } } }
+      });
+    }
+
+    // ----- Slide 10 (goal line horizontal) -----
+    function initSlide10() {
+      var chartDom = document.getElementById('asset-chart');
+      var myChart = echarts.init(chartDom);
+      var years = ['現在','1年後','2年後','3年後','4年後','5年後'];
+
+      var option = {
+        color: ['#2B6CB0', '#ED8936'],
+        legend: { show:false },
+        grid: { left:'3%', right:'4%', bottom:'3%', top:'3%', containLabel:true },
+        xAxis: { type:'category', boundaryGap:false, data: years, axisLine:{ lineStyle:{ color:'#718096' } }, axisLabel:{ fontSize:14, color:'#4A5568' } },
+        yAxis: { type:'value', name:'資産額（万円）', nameTextStyle:{ color:'#4A5568', fontSize:14, padding:[0,0,10,0] },
+                 min:0, max:12000, interval:2000, axisLine:{ show:true, lineStyle:{ color:'#CBD5E0' } },
+                 axisLabel:{ formatter:'{value}', fontSize:14, color:'#4A5568' }, splitLine:{ lineStyle:{ color:['#EDF2F7'] } } },
+        tooltip: {
+          trigger:'axis',
+          formatter:function(params){
+            var result = params[0].axisValue + '<br/>';
+            params.forEach(function(p){
+              var color = p.color, seriesName = p.seriesName, value = p.value;
+              result += '<span style="display:inline-block;margin-right:5px;border-radius:10px;width:10px;height:10px;background-color:' + color + '"></span>' + seriesName + ': ' + value + '万円<br/>';
+            });
+            return result;
+          }
+        },
+        series: [
+          { name:'ここちゃん（強気）', type:'line', symbol:'none', lineStyle:{ width:0 }, areaStyle:{ color:'rgba(72,187,120,0.2)' }, data:[1600, 3500, 6000, 8500, 10500, 12000] },
+          { name:'ここちゃん（ベース）', type:'line', symbol:'none', lineStyle:{ width:0 }, areaStyle:{ color:'rgba(237,137,54,0.2)' }, data:[1600, 3200, 5000, 6500, 7500, 8500] },
+          { name:'ここちゃん（弱気）', type:'line', symbol:'none', lineStyle:{ width:0 }, areaStyle:{ color:'rgba(229,62,62,0.2)' }, data:[1600, 2800, 4000, 4800, 5500, 6000] },
+          { name:'ここちゃん', type:'line', symbol:'circle', symbolSize:8, itemStyle:{ color:'#2B6CB0' }, lineStyle:{ width:3 }, data:[1600, 3200, 5000, 6500, 7500, 8500] },
+          { name:'じぃじ（強気）', type:'line', symbol:'none', lineStyle:{ width:0 }, areaStyle:{ color:'rgba(72,187,120,0.2)' }, data:[200, 1200, 2800, 4500, 5800, 7000] },
+          { name:'じぃじ（ベース）', type:'line', symbol:'none', lineStyle:{ width:0 }, areaStyle:{ color:'rgba(237,137,54,0.2)' }, data:[200, 1000, 2200, 3200, 4000, 4500] },
+          { name:'じぃじ（弱気）', type:'line', symbol:'none', lineStyle:{ width:0 }, areaStyle:{ color:'rgba(229,62,62,0.2)' }, data:[200, 600, 1200, 1800, 2200, 2500] },
+          { name:'じぃじ', type:'line', symbol:'circle', symbolSize:8, itemStyle:{ color:'#ED8936' }, lineStyle:{ width:3 }, data:[200, 1000, 2200, 3200, 4000, 4500] },
+          { name:'目標', type:'line', symbol:'none', lineStyle:{ type:'dashed', width:2, color:'#2D3748' }, data: years.map(() => 10000) }
+        ]
+      };
+      myChart.setOption(option);
+      window.addEventListener('resize', () => myChart.resize());
+    }
+
+    // ----- Slide 14 -----
+    function initSlide14() {
+      var chartDom = document.getElementById('waterfall-chart');
+      var myChart = echarts.init(chartDom);
+      var option = {
+        title: { text:'ストレス時の資産別寄与度（%）', left:'center', textStyle:{ fontSize:16, fontWeight:'bold', fontFamily:"'Noto Sans JP', sans-serif" } },
+        tooltip: { trigger:'axis', axisPointer:{ type:'shadow' }, formatter:(params)=> params[0].name + ': ' + params[0].value + '%' },
+        grid: { left:'3%', right:'4%', bottom:'8%', top:'15%', containLabel:true },
+        xAxis: { type:'category', data:['ここちゃん\n開始','暗号資産','成長株/\nFANG+','米国株','国内株','金ETF','現金','ここちゃん\n最終','じぃじ\n開始','暗号資産','米国株','国内\n高配当','金ETF','現金','じぃじ\n最終'],
+                 axisLabel:{ interval:0, fontSize:10, lineHeight:12, fontFamily:"'Noto Sans JP', sans-serif", color:'#2D3748' } },
+        yAxis: { type:'value', axisLabel:{ formatter:'{value}%' } },
+        series: [{
+          name:'資産変動', type:'bar', stack:'Total',
+          label:{ show:true, position:'inside', formatter:(p)=> (p.dataIndex===0||p.dataIndex===7||p.dataIndex===8||p.dataIndex===14)? p.value+'%' : (p.value>0? '+'+p.value+'%': p.value+'%'), fontSize:10 },
+          itemStyle:{
+            color:function(p){
+              if (p.dataIndex===0 || p.dataIndex===8) return '#0A2463';
+              else if (p.dataIndex===7 || p.dataIndex===14) return '#E53E3E';
+              else if (p.value < 0) return '#E53E3E'; else return '#48BB78';
+            }
+          },
+          data:[ 100,-14,-8,-6,-4,2,0,70, 100,-4,-8,-6,3,0,80 ]
+        }]
+      };
+      myChart.setOption(option);
+      window.addEventListener('resize', () => myChart.resize());
+    }
+  </script>
+</body>
+</html>
